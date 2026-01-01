@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elasty — The Elastic Frog</title>
+    
+    <!-- Google Fonts for a serious, mythological tone -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #0a1f0a;
+            --text-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            height: 100vh;
+            overflow: hidden; /* Prevent scrollbars during stretching */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Background Handling */
+        .bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6; /* Dim the image for seriousness */
+        }
+
+        .vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle, rgba(0,0,0,0) 20%, rgba(0,0,0,0.9) 100%);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 3rem;
+            z-index: 10;
+        }
+
+        .logo {
+            height: 90px;
+            border-radius: 50%;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+        }
+
+        .social-link {
+            font-family: 'Cinzel', serif;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary-gold);
+            color: var(--primary-gold);
+            background: rgba(0,0,0,0.5);
+        }
+
+        /* Main Content */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,1);
+            max-width: 800px;
+            pointer-events: none; /* Let clicks pass through to frog area if needed */
+        }
+
+        p.subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* The Frog Container */
+        .frog-stage {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Allow the frog to stretch outside this box */
+            perspective: 1000px;
+        }
+
+        /* The Elastic Frog */
+        #elasty-frog {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            cursor: pointer;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.8));
+            
+            /* The Elastic Physics */
+            transition: transform 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            transform-origin: center center;
+            
+            /* Idle Animation */
+            animation: breathe 4s infinite ease-in-out;
+        }
+
+        #elasty-frog:active {
+            /* Immediate squash when holding click */
+            transition: transform 0.1s ease-out;
+            transform: scale(0.9, 0.9); 
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Click instruction */
+        .instruction {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.75rem;
+            opacity: 0.4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Backgrounds -->
+    <div class="bg-layer"></div>
+    <div class="vignette"></div>
+
+    <nav>
+        <!-- Logo -->
+        <img src="Gemini_Generated_Image_pipvpspipvpspipv.png" alt="Elasty Logo" class="logo">
+        
+        <!-- Social Link -->
+        <a href="https://twitter.com" target="_blank" class="social-link">Twitter / X</a>
+    </nav>
+
+    <main>
+        <h1>The Frog That Can Reach Any Pump.</h1>
+        <p class="subtitle">Elasty — The Elastic Frog</p>
+
+        <div class="frog-stage">
+            <img src="Gemini_Generated_Image_8k4s4m8k4s4m8k4s-removebg-preview.png" alt="The Elastic Frog" id="elasty-frog">
+        </div>
+
+        <div class="instruction">Touch the frog to witness the reach</div>
+    </main>
+
+    <script>
+        const frog = document.getElementById('elasty-frog');
+        let isStretched = false;
+
+        frog.addEventListener('click', () => {
+            // If already stretched, return to normal immediately
+            if(isStretched) return;
+
+            isStretched = true;
+            
+            // 1. Calculate a random, exaggerated stretch direction
+            // We want it to feel like it's snapping towards a "pump" (target)
+            
+            // Random translation (Movement) - Large range
+            const moveX = (Math.random() - 0.5) * 400; 
+            const moveY = (Math.random() - 0.5) * 400;
+
+            // Random Scale (Elasticity) - Skewing the body
+            // If moving right, stretch width. If moving up, stretch height.
+            const stretchFactor = 1.5 + Math.random(); // Between 1.5x and 2.5x
+            const squashFactor = 0.6 + (Math.random() * 0.2); // Get thinner
+
+            // Determine primary axis of movement to stretch correctly
+            let scaleX, scaleY;
+            if (Math.abs(moveX) > Math.abs(moveY)) {
+                scaleX = stretchFactor;
+                scaleY = squashFactor;
+            } else {
+                scaleX = squashFactor;
+                scaleY = stretchFactor;
+            }
+
+            // Apply the transformation
+            // We pause the breathing animation during the jump
+            frog.style.animation = 'none';
+            frog.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scaleX}, ${scaleY})`;
+
+            // 2. The Snap Back (The "Elastic" recoil)
+            setTimeout(() => {
+                // Reset transform
+                frog.style.transform = `translate(0px, 0px) scale(1, 1)`;
+                
+                // Restart breathing animation after transition clears
+                setTimeout(() => {
+                    frog.style.animation = 'breathe 4s infinite ease-in-out';
+                    isStretched = false;
+                }, 600); // Matches the CSS transition time
+            }, 300); // How long it stays stretched at the "pump"
+        });
+    </script>
+</body>
+</html>
